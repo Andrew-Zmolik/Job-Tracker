@@ -26,3 +26,15 @@ status.interviewing { color: orange; }
 status.offer { color: green; }
 status.rejected { color: red; } 
 status.ghosted { color: grey; }
+
+form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+form input, form select, form button {
+  padding: 8px;
+  font-size: 14px;
+}
