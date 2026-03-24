@@ -1,23 +1,56 @@
-async function loadJobs() {
-  const response = await fetch('jobs.json');
-  const jobs = await response.json();
+const form = document.getElementById('jobForm');
+const tableBody = document.querySelector('#jobTable tbody');
 
-  const tableBody = document.querySelector('#jobTable tbody');
-  tableBody.innerHTML = '';
+// Load jobs from localStorage
+function getJobs() {
+  retunr JSON.parse(localStorage.getItem('jobs')) || [];
+}
+
+// Save Jobs
+function saveJobs(jobs) {
+  localStorage.setItem('jobs', JSON.stringify(jobs));
+}
+
+// Render Table
+function renderJobs() {
+  const jobs = getJobs();
+  tablebody.innerHTML = '';
 
   jobs.forEach(job => {
     const row = document.createElement('tr');
-
-    row.innerHTML = `
-      <td>${job.company}</td>
+    row.innerHTML =  `
+<td>${job.company}</td>
       <td>${job.role}</td>
       <td class="status ${job.status.toLowerCase()}">${job.status}</td>
       <td>${job.dateApplied}</td>
       <td>${job.notes}</td>
-    `:
+      <td><a href="${job.link}" target="_blank">View</a></td>
+    `;
 
     tableBody.appendChild(row);
   });
 }
 
-loadJobs();
+// Handle form submit
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const newJob = {
+    company: document.getElementById('company').value,
+    role: document.getElementById('role').value,
+    status: document.getElementById('status').value,
+    dateApplied: document.getElementById('dateApplied').value,
+    notes: document.getElementById('notes').value,
+    link: document.getElementById('link').value
+  };
+
+  const jobs = getJobs();
+  jobs.push(newJob);
+  saveJobs(jobs);
+
+  form.reset();
+  renderJobs();
+});
+
+// Initial load
+renderJobs();    
