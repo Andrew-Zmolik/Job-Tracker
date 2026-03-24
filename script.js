@@ -42,7 +42,6 @@ form.addEventListener('submit', (e) => {
     status: document.getElementById('status').value,
     dateApplied: document.getElementById('dateApplied').value,
     notes: document.getElementById('notes').value,
-    link: document.getElementById('link').value
   };
 
   const jobs = getJobs();
