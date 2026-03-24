@@ -3,12 +3,12 @@ const tableBody = document.querySelector('#jobTable tbody');
 
 // Load jobs from localStorage
 function getJobs() {
-  return JSON.parse(localStorage.getItem('jobs')) || [];
+  return json.parse(localStorage.getItem('jobs')) || [];
 }
 
 // Save jobs
 function saveJobs(jobs) {
-  localStorage.setItem('jobs', JSON.stringify(jobs));
+  localStorage.setItem('jobs', json.stringify(jobs));
 }
 
 // Render table
