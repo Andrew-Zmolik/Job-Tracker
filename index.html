@@ -3,23 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>Job Tracker</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1>Job Tracker</h1>
 
+  <form id="jobForm">
+    <input type="text" id="company" placeholder="Company" required />
+    <input type="text" id="role" placeholder="Role" required />
+    
+    <select id="status">
+      <option>Applied</option>
+      <option>Interviewing</option>
+      <option>Offer</option>
+      <option>Rejected</option>
+      <option>Ghosted</option>
+    </select>
+
+    <input type="date" id="dateApplied" required />
+    <input type="text" id="notes" placeholder="Notes" />
+    <input type="url" id="link" placeholder="Job Link" />
+
+    <button type="submit">Add Job</button>
+  </form>
+
   <table id="jobTable">
-    <thread>
+    <thead>
       <tr>
         <th>Company</th>
-        <th>Tole</th>
+        <th>Role</th>
         <th>Status</th>
         <th>Date Applied</th>
         <th>Notes</th>
+        <th>Link</th>
       </tr>
-    </thread>
+    </thead>
     <tbody></tbody>
-   </table>
+  </table>
 
   <script src="script.js"></script>
 </body>
