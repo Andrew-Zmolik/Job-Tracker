@@ -3,23 +3,24 @@ const tableBody = document.querySelector('#jobTable tbody');
 
 // Load jobs from localStorage
 function getJobs() {
-  retunr JSON.parse(localStorage.getItem('jobs')) || [];
+  return JSON.parse(localStorage.getItem('jobs')) || [];
 }
 
-// Save Jobs
+// Save jobs
 function saveJobs(jobs) {
   localStorage.setItem('jobs', JSON.stringify(jobs));
 }
 
-// Render Table
+// Render table
 function renderJobs() {
   const jobs = getJobs();
-  tablebody.innerHTML = '';
+  tableBody.innerHTML = '';
 
   jobs.forEach(job => {
     const row = document.createElement('tr');
-    row.innerHTML =  `
-<td>${job.company}</td>
+
+    row.innerHTML = `
+      <td>${job.company}</td>
       <td>${job.role}</td>
       <td class="status ${job.status.toLowerCase()}">${job.status}</td>
       <td>${job.dateApplied}</td>
@@ -53,4 +54,4 @@ form.addEventListener('submit', (e) => {
 });
 
 // Initial load
-renderJobs();    
+renderJobs();
